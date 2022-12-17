@@ -111,7 +111,7 @@ main(){
 			return 0;
 		} 
 		system("cls");
-		cout<<"Passei aqui 2";
+		//cout<<"Passei aqui 2";
 	}while(resposta!='1' && resposta!='2' && resposta!='3' && resposta!='4');
 	//while(resposta!=1 && resposta!=2 && resposta!=3 && resposta!=4);
 }
