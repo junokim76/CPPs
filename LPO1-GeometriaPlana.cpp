@@ -4,7 +4,7 @@
 #include <conio.h>//para utilizar o getch()
 #include <ctype.h>//para utilizar o isdigit()
 using namespace std;
-//Tela apresentacao
+//Tela apresentacao by Juno Kim
 void telaApresentacao(){
 	cout<< setw(60) <<setfill('*')<<"\n";	
 	cout<< setw(40) <<setfill(' ')<<"GEOMETRIA PLANA\n";
