@@ -4,7 +4,8 @@
         
     </head>
     <body>
-        <h1>LPO1<h1>
-        Programas desenvolvidos em C
+        <h1>LPO1 - Linguagem de Programação<h1>
+            Programas desenvolvidos em Portugol
+            Programas desenvolvidos em C 
     </body>
 </html>
