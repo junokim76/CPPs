@@ -1,7 +1,6 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        Programas IFSC
     </head>
     <body>
         <h1>Meus Programas CTDS - IFSC<h1>
