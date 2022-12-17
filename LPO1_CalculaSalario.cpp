@@ -24,7 +24,10 @@ Maior que R$ 8000	30%
 - A entrada da categoria só poderá aceitar uma das respostas válidas. Da mesma forma, a entrada da resposta Sim ('S' ou 's') e Não ('N' ou 'n') para continuar para uma próxima empresa.
 
 Importante: o salário bruto deve considerar (incluir) as horas extras - quando for o caso.
-Ex. 200 horas, Cat. 2: Sal. bruto = (160 * 30) + ( 40 * 30 + ( 40 * 30 * 0.5)) = 4800 + (1200 + 600) = 6600. */
+Ex. 200 horas, Cat. 2: Sal. bruto = (160 * 30) + ( 40 * 30 + ( 40 * 30 * 0.5)) = 4800 + (1200 + 600) = 6600. 
+By Juno Kim */
+
+
 #include <iostream>
 #include <string>
 using namespace std; //Para nao precisar digitar std:: antes do cin e cout
