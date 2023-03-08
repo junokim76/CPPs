@@ -1,0 +1,18 @@
+programa {
+	funcao inicio() 
+	{
+		inteiro N
+		cadeia bit=""
+		
+		escreva("Número: ") leia(N)
+		
+		enquanto (N>0)
+		{
+		    escreva(N%2)
+		    bit=(N%2) + bit
+		    N = N / 2
+		    escreva(" ==> ",N,"\n")
+		}
+		escreva(bit)
+	}
+}
