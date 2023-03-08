@@ -3,7 +3,7 @@
         <meta charset="UTF-8">
     </head>
     <body>
-        <h1>Meus Programas CTDS - IFSC<h1>
-        Programas desenvolvidos no curso de CTDS do IFSC 2022
+        <h1>Minhas UC - CTDS - IFSC<h1>
+        <p> CTDS do IFSC 2022/2023 </p>
     </body>
 </html>
