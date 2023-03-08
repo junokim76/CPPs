@@ -1,0 +1,28 @@
+<!DOCTYPE html> 
+<html lang="pt-BR"> 
+<head> 
+  <meta charset="utf-8"> 
+  <title> Fundamentos do PHP </title> 
+  <link rel="stylesheet" href="formata-formulario.css">
+</head> 
+
+<body> 
+ <h1> Fundamentos do PHP - listaL1 - exercício 2 </h1>
+
+ <form action="exercicio2.php" method="post">
+  <fieldset>
+   <legend> Viagem da Maria - dados da viagem </legend>
+   <label class="alinha"> Distância da viagem: </label>
+   <input type="number" name="distancia" autofocus> <br>
+
+   <label class="alinha"> Autonomia do veículo: </label>
+   <input type="number" name="autonomia" min="0"> <br>
+
+   <label class="alinha"> Preço da gasolina, por litro: </label>
+   <input type="number" name="preco-gasolina" min="0" step="0.01">  <br>
+
+   <button> Calcular dados da viagem </button>
+  </fieldset>
+ </form>    
+</body> 
+</html> 

@@ -1,0 +1,26 @@
+<!DOCTYPE html> 
+<html lang="pt-BR"> 
+<head> 
+  <meta charset="utf-8"> 
+  <title>PHP Fundamnetals</title> 
+  <link rel="stylesheet" href="formata-formulario.css">  
+</head> 
+
+<body> 
+  <h1>PHP Fundamentals Vectors - Lista L2 - Exercise 8</h1>
+  <form action="exercise8.php" method="POST">
+    <fieldset>
+      <legend>Vetores em PHP - Simulação de um carrinho de compras - CTDS - PRW</legend> 
+     
+      <p> Selecione os produtos para a compra:</p><br>
+      <input  class="alinha" type="checkbox" name="produtos[]" value="Dipirona" id="dipirona" ><label for="dipirona">Dipirona</label><br>
+      <input  class="alinha" type="checkbox" name="produtos[]" value="Loratadina" id="loratadina"><label for="loratadina">Loratadina</label><br>
+      <input  class="alinha" type="checkbox" name="produtos[]" value="Rivotril" id="rivotril"><label for="rivotril">Rivotril</label><br>
+      <hr>
+      <input  class="alinha" type="checkbox" name="faixaEtaria[]" value="acima65" id="acima65"><label for="acima65">Cliente com mais de 65 anos</label><br>
+      <button>Processar Carrinho de Compra</button>
+      <br>
+    </fieldset>
+  </form>
+</body> 
+</html> 

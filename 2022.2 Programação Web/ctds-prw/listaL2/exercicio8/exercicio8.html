@@ -1,0 +1,30 @@
+<!DOCTYPE html> 
+<html lang="pt-BR"> 
+<head> 
+  <meta charset="utf-8"> 
+  <title> Fundamentos do PHP </title> 
+  <link rel="stylesheet" href="formata-formulario.css">
+</head> 
+
+<body> 
+ <h1> Fundamentos do PHP - Vetores - listaL2 - exercício 8 </h1>
+
+ <form action="exercicio8.php" method="post">
+  <fieldset>
+   <legend> Vetores em PHP - simulação de um carrinho de compras de medicamentos </legend>
+
+   <label class="alinha" for="remedio1"> Selecione os remédios para a compra: </label> <br>
+
+   <input type="checkbox" name="produtos[]" value="Dipirona" id="remedio1"> <label> Dipirona </label> <br>
+   <input type="checkbox" name="produtos[]" value="Rivotril"> <label> Rivotril </label> <br>
+   <input type="checkbox" name="produtos[]" value="Loratadina"> <label> Loratadina </label> <br> <br>
+
+   <hr>
+
+   <input type="checkbox" name="faixa-etaria[]" value="sim"> <label> Marque esta opção se o clinte de nossa farmácia tem 60 anos ou mais </label> <br>
+
+   <button> Processar compra on-line </button>
+  </fieldset>
+ </form>    
+</body> 
+</html> 

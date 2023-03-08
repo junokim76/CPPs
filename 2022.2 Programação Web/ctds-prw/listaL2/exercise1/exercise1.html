@@ -1,0 +1,31 @@
+<!DOCTYPE html> 
+<html lang="pt-BR"> 
+<head> 
+  <meta charset="utf-8"> 
+  <title>Fundamentos do PHP  </title> 
+  <link rel="stylesheet" href="formata-formulario.css">  
+</head> 
+
+<body> 
+  <h1>PHP Fundamentals Vectors - Lista L2 - Exercise 1</h1>
+  <form action="exercise1.php" method="POST">
+    <fieldset>
+      <legend>Media Final do aluno - CTDS - PRW</legend> 
+      <label class="alinha"> Nome do aluno</label>
+      <input type="text" name="nome-aluno" autofocus
+      placeholder="Seu nome aqui..."><br>
+
+      <label class="alinha"> Primeira Nota do aluno: </label>
+      <input type="number" name="nota1" min="0" max="10" step="0.1"><br>
+
+      <label class="alinha"> Segunda Nota do aluno: </label>
+      <input type="number" name="nota2" min="0" max="10" step="0.1"><br>
+
+      <label class="alinha"> Terceira Nota do aluno: </label>
+      <input type="number" name="nota3" min="0" max="10" step="0.1"><br>
+
+      <button>Calcular Media Final do aluno</button>
+    </fieldset>
+  </form>
+</body> 
+</html> 

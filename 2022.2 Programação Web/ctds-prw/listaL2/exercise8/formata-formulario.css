@@ -1,0 +1,91 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Alumni+Sans+Pinstripe&family=Ubuntu&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Alumni+Sans+Pinstripe&family=Comfortaa&family=Ubuntu&display=swap');
+
+
+body{
+    /*font-family: 'Ubuntu', sans-serif;*/
+    /*font-family: 'Alumni Sans Pinstripe', sans-serif;*/
+    font-family: 'Comfortaa', cursive;
+    margin: 0;
+}
+
+h1{
+    border-bottom: 3px solid #5671b3;
+    background-color: #77a0dd;
+    color: white;
+    margin: 0;
+    text-align: center;
+    margin-bottom: 20px;
+}
+fieldset{
+    border: 1px solid #888;
+    width: 50%;
+    margin: 20px auto;
+    background-color: aliceblue;
+    box-shadow:  2px 2px 3px #888;
+    border-radius: 15px;
+    /*padding: 30px; */
+    padding-top: 30px;
+    padding-left: 30px;
+}
+label.alinha{
+    /*border: 1px solid;*/
+    width: 440px;
+    display: inline-block;
+    margin-bottom: 10px;
+    text-align: right;
+}
+input[type="text"]{
+    width: 230px;
+}
+button{
+    display: block;
+    font-family: 'Comfortaa', cursive;
+    font-weight: bold;
+    margin: auto;
+    margin-top: 5px;
+}
+p{
+    border: 1px solid #888;
+    background-color: #69a2e2;
+    color: white;
+    text-align: center;
+    width: 50%;
+    margin: auto;
+}
+span{
+    font-weight: bold;
+    font-style: italic;
+}
+
+/*formatação do CSS em relação as tabelass */
+table {
+    border: 1px solid;
+    width: 50%;
+    margin: 20px auto;
+    background-color: aliceblue ; 
+    height: auto;
+    text-align: center;
+    border-collapse: collapse; /*retira o espaço entre celulas*/
+    /*border-spacing: px;*/
+}
+th, td {
+    border: 1px solid;
+}
+th {
+    background-color: #69a2e2;
+}
+caption{
+    margin-bottom: 10px;
+    caption-side: bottom;
+    margin-top: 10px;
+    color: cadetblue;
+    font-size: small;
+    text-align: left;
+}
+legend{
+    text-align: center;
+    color: teal;
+    font-size: 18px;
+}
