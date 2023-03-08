@@ -1,0 +1,140 @@
+IFSC BANCO DE DADOS II - JUNO COSTA KIM - 2FASE 2022.2
+
+1.Mostrar a lista de fornecedores dos produtos que aparecem em pedidos
+
+mysql> SELECT * FROM fornecedores JOIN pedidos ON fornecedores.id = pedidos.idFornecedor;
++----+---------------------+---------------+-----------+----+--------------+-----------+------------+-------+
+| id | nome                | email         | telefone  | id | idFornecedor | idProduto | quantidade | valor |
++----+---------------------+---------------+-----------+----+--------------+-----------+------------+-------+
+|  1 | Vendedor de canetas | canetas@email |           |  1 |            1 |         2 |         20 |   100 |
+|  2 | Vendedor de papel   | papel@email   | 123456789 |  2 |            2 |         6 |        150 |   100 |
+|  4 | Vendedor de tinta   | tinta@email   | 823457896 |  3 |            4 |         1 |         30 |    15 |
+|  1 | Vendedor de canetas | canetas@email |           |  4 |            1 |         1 |         10 |     5 |
++----+---------------------+---------------+-----------+----+--------------+-----------+------------+-------+
+4 rows in set (0.00 sec)
+
+1.1. Mostrar a lista de fornecedores em ordem alfabética e sem repetições
+
+mysql> SELECT f.nome FROM fornecedores f JOIN pedidos p ON f.id = p.idFornecedor GROUP BY f.nome ORDER BY f.nome ASC;
++---------------------+
+| nome                |
++---------------------+
+| Vendedor de canetas |
+| Vendedor de papel   |
+| Vendedor de tinta   |
++---------------------+
+3 rows in set (0.00 sec)
+
+1.2. Mostrar a lista de fornecedores com o nome dos produtos fornecidos
+
+mysql> SELECT f.nome, r.nome FROM fornecedores f JOIN pedidos p ON f.id = p.idFornecedor JOIN produtos r ON r.id = p.idProduto;
++---------------------+--------------+
+| nome                | nome         |
++---------------------+--------------+
+| Vendedor de canetas | Caneta Azul  |
+| Vendedor de papel   | Papel Azul   |
+| Vendedor de tinta   | Caneta Preta |
+| Vendedor de canetas | Caneta Preta |
++---------------------+--------------+
+4 rows in set (0.00 sec)
+
+1.3. Mostrar a lista de fornecedores com o valor total de vendas
+
+mysql> SELECT f.nome, SUM(p.valor) FROM fornecedores f JOIN pedidos p ON f.id = p.idFornecedor GROUP BY f.nome;
++---------------------+--------------+
+| nome                | SUM(p.valor) |
++---------------------+--------------+
+| Vendedor de canetas |          105 |
+| Vendedor de papel   |          100 |
+| Vendedor de tinta   |           15 |
++---------------------+--------------+
+3 rows in set (0.00 sec)
+
+2. Mostrar a lista completa de pedidos com as dados de cada produto
+
+mysql> SELECT * FROM pedidos p JOIN produtos r ON p.idProduto = r.id;
++----+--------------+-----------+------------+-------+----+--------------+-----------------------+------+
+| id | idFornecedor | idProduto | quantidade | valor | id | nome         | descricao             | peso |
++----+--------------+-----------+------------+-------+----+--------------+-----------------------+------+
+|  1 |            1 |         2 |         20 |   100 |  2 | Caneta Azul  | Caneta sem marca azul |   30 |
+|  2 |            2 |         6 |        150 |   100 |  6 | Papel Azul   | Papel azul 1 folha    |    0 |
+|  3 |            4 |         1 |         30 |    15 |  1 | Caneta Preta | Caneta BIC Preta      |   30 |
+|  4 |            1 |         1 |         10 |     5 |  1 | Caneta Preta | Caneta BIC Preta      |   30 |
++----+--------------+-----------+------------+-------+----+--------------+-----------------------+------+
+4 rows in set (0.00 sec)
+
+2.1. Mostre uma tabela com Quantidade, Nome do Produto, Peso do produto e Peso Total do pedido(quantidade * peso)
+
+mysql> SELECT p.quantidade, r.nome, r.peso, (p.quantidade * r.peso) as peso_total FROM pedidos p JOIN produtos r ON p.idProduto = r.id;
++------------+--------------+------+------------+
+| quantidade | nome         | peso | peso_total |
++------------+--------------+------+------------+
+|         20 | Caneta Azul  |   30 |        600 |
+|        150 | Papel Azul   |    0 |          0 |
+|         30 | Caneta Preta |   30 |        900 |
+|         10 | Caneta Preta |   30 |        300 |
++------------+--------------+------+------------+
+4 rows in set (0.00 sec)
+
+2.2. Inclua na tabela anterior o nome e email do fornecedor
+
+mysql> SELECT p.quantidade, r.nome, r.peso, (p.quantidade * r.peso) as peso_total, f.nome, f.email as peso_total FROM pedidos p JOIN produtos r ON p.idProduto = r.id JOIN fornecedores f ON f.id = p.idFornecedor;
++------------+--------------+------+------------+---------------------+---------------+
+| quantidade | nome         | peso | peso_total | nome                | peso_total    |
++------------+--------------+------+------------+---------------------+---------------+
+|         20 | Caneta Azul  |   30 |        600 | Vendedor de canetas | canetas@email |
+|        150 | Papel Azul   |    0 |          0 | Vendedor de papel   | papel@email   |
+|         30 | Caneta Preta |   30 |        900 | Vendedor de tinta   | tinta@email   |
+|         10 | Caneta Preta |   30 |        300 | Vendedor de canetas | canetas@email |
++------------+--------------+------+------------+---------------------+---------------+
+4 rows in set (0.00 sec)
+
+3. Mostrar a lista de produtos e seus fornecedores para os produtos que não estejam disponíveis
+
+mysql> SELECT * FROM estoque e JOIN fornecedores f ON e.idFornecedor=f.id WHERE e.disponiveis=0;
++----+--------------+-----------+-------------+-------+----+-------------------+-------------+-----------+
+| id | idFornecedor | idProduto | disponiveis | custo | id | nome              | email       | telefone  |
++----+--------------+-----------+-------------+-------+----+-------------------+-------------+-----------+
+|  9 |            2 |         5 |           0 |     5 |  2 | Vendedor de papel | papel@email | 123456789 |
++----+--------------+-----------+-------------+-------+----+-------------------+-------------+-----------+
+1 row in set (0.00 sec)
+
+3.1. Inclua os dados dos produtos na pesquisa anterior
+
+mysql> SELECT * FROM estoque e JOIN fornecedores f ON e.idFornecedor=f.id JOIN produtos p ON p.id = e.idProduto WHERE e.disponiveis=0;
++----+--------------+-----------+-------------+-------+----+-------------------+-------------+-----------+----+----------+--------------------------------+------+
+| id | idFornecedor | idProduto | disponiveis | custo | id | nome              | email       | telefone  | id | nome     | descricao                      | peso |
++----+--------------+-----------+-------------+-------+----+-------------------+-------------+-----------+----+----------+--------------------------------+------+
+|  9 |            2 |         5 |           0 |     5 |  2 | Vendedor de papel | papel@email | 123456789 |  5 | Papel A4 | Papel branco A4 com 100 folhas |  150 |
++----+--------------+-----------+-------------+-------+----+-------------------+-------------+-----------+----+----------+--------------------------------+------+
+1 row in set (0.00 sec)
+
+3.2. Ajuste a tabela anterior para apresentar somente dados amigáveis para humanos
+
+mysql> SELECT p.nome, p.descricao, e.disponiveis, e.custo, f.nome, f.email, f.telefone FROM estoque e JOIN fornecedores f ON e.idFornecedor=f.id JOIN produtos p ON p.id = e.idProduto WHERE e.disponiveis=0;
++----------+--------------------------------+-------------+-------+-------------------+-------------+-----------+
+| nome     | descricao                      | disponiveis | custo | nome              | email       | telefone  |
++----------+--------------------------------+-------------+-------+-------------------+-------------+-----------+
+| Papel A4 | Papel branco A4 com 100 folhas |           0 |     5 | Vendedor de papel | papel@email | 123456789 |
++----------+--------------------------------+-------------+-------+-------------------+-------------+-----------+
+1 row in set (0.00 sec)
+
+3.3. Mostre uma tabela com o total disponível de cada produto em estoque por fornecedor
+
+mysql> SELECT p.nome, sum(e.disponiveis), f.nome FROM estoque e JOIN fornecedores f ON e.idFornecedor=f.id JOIN produtos p ON p.id = e.idProduto GROUP BY e.idProduto, e.idFornecedor;
++--------------+--------------------+---------------------+
+| nome         | sum(e.disponiveis) | nome                |
++--------------+--------------------+---------------------+
+| Caneta Preta |                 50 | Vendedor de tinta   |
+| Caneta Preta |                100 | Vendedor de canetas |
+| Caneta Azul  |                100 | Vendedor de canetas |
+| Caneta Azul  |                150 | Vendedor de tinta   |
+| Papel A4     |                 50 | Vendedor de papel   |
+| Papel Azul   |                200 | Vendedor de papel   |
++--------------+--------------------+---------------------+
+6 rows in set (0.00 sec)
+
+
+
+
+

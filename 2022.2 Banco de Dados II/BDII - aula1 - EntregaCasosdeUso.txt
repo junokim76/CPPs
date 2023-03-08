@@ -1,0 +1,201 @@
+**********************************************************************
+
+IFSC - JUNO COSTA KIM - CTDS BANCO DE DADOS II
+
+**********************************************************************
+
+MariaDB [(none)]> show databases;
++--------------------+
+| Database           |
++--------------------+
+| MeuBanco           |
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
+| test               |
++--------------------+
+6 rows in set (0.000 sec)
+
+**********************************************************************
+
+MariaDB [(none)]> use MeuBanco;
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+
+**********************************************************************
+
+1. Listar todos os dados da tabela pessoa
+
+MariaDB [MeuBanco]> SELECT * FROM `pessoas`;
++----+-------------+---------+
+| id | nome        | email   |
++----+-------------+---------+
+|  1 | nome um     | 1@email |
+|  2 | nome dois   | 2@email |
+|  3 | nome tres   | 3@email |
+|  4 | nome quatro | 4@email |
+|  5 | nome cinco  | 5@email |
++----+-------------+---------+
+5 rows in set (0.000 sec)
+
+**********************************************************************
+
+2. Listar nome e e-mail em ordem descendente de e-mail
+
+MariaDB [MeuBanco]> SELECT nome, email FROM `pessoas` ORDER BY email DESC;
++-------------+---------+
+| nome        | email   |
++-------------+---------+
+| nome cinco  | 5@email |
+| nome quatro | 4@email |
+| nome tres   | 3@email |
+| nome dois   | 2@email |
+| nome um     | 1@email |
++-------------+---------+
+5 rows in set (0.000 sec)
+
+**********************************************************************
+
+MariaDB [MeuBanco]> SELECT * FROM telefone;
++----------+-----------+
+| idpessoa | telefone  |
++----------+-----------+
+|        1 | 1111-1111 |
+|        2 | 2222-2222 |
+|        3 | 3333-3333 |
++----------+-----------+
+3 rows in set (0.000 sec)
+
+3. Listar nome e telefone das pessoas que tem telefone
+
+MariaDB [MeuBanco]> SELECT pessoas.nome, telefone.telefone FROM `pessoas`,`telefone` where pessoas.id = telefone.idpessoa;
++-----------+-----------+
+| nome      | telefone  |
++-----------+-----------+
+| nome um   | 1111-1111 |
+| nome dois | 2222-2222 |
+| nome tres | 3333-3333 |
++-----------+-----------+
+3 rows in set (0.000 sec)
+
+**********************************************************************
+
+4. Listar nome e telefone de todas as pessoas
+
+MariaDB [MeuBanco]> SELECT nome, telefone FROM `pessoas`,`telefone` where pessoas.id = telefone.idpessoa;
++-----------+-----------+
+| nome      | telefone  |
++-----------+-----------+
+| nome um   | 1111-1111 |
+| nome dois | 2222-2222 |
+| nome tres | 3333-3333 |
++-----------+-----------+
+3 rows in set (0.000 sec)
+
+**********************************************************************
+
+5. Listar nome das pessoas que não tem telefone
+
+MariaDB [MeuBanco]> SELECT pessoas.nome FROM `pessoas` where pessoas.id NOT IN (SELECT telefone.idpessoa FROM telefone);
++-------------+
+| nome        |
++-------------+
+| nome quatro |
+| nome cinco  |
++-------------+
+2 rows in set (0.000 sec)
+
+**********************************************************************
+
+6. Alterar o nome das pessoas para os colegas de classe
+
+MariaDB [MeuBanco]> UPDATE pessoas SET nome="Juno" WHERE id=1;
+Query OK, 1 row affected (0.002 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+MariaDB [MeuBanco]> UPDATE pessoas SET nome="Leandro" WHERE id=2;
+Query OK, 1 row affected (0.001 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+MariaDB [MeuBanco]> UPDATE pessoas SET nome="Wayne" WHERE id=3;
+Query OK, 1 row affected (0.002 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+MariaDB [MeuBanco]> SELECT * FROM `pessoas`,`telefone` where pessoas.id = telefone.idpessoa;
++----+---------+---------+----------+-----------+
+| id | nome    | email   | idpessoa | telefone  |
++----+---------+---------+----------+-----------+
+|  1 | Juno    | 1@email |        1 | 1111-1111 |
+|  2 | Leandro | 2@email |        2 | 2222-2222 |
+|  3 | Wayne   | 3@email |        3 | 3333-3333 |
++----+---------+---------+----------+-----------+
+3 rows in set (0.000 sec)
+
+**********************************************************************
+
+7. Listar nome das pessoas que não tem telefone em ordem descendente (nome)
+
+MariaDB [MeuBanco]> SELECT pessoas.nome FROM `pessoas` where pessoas.id NOT IN (SELECT telefone.idpessoa FROM telefone) ORDER BY pessoas.nome DESC;
++-------------+
+| nome        |
++-------------+
+| nome quatro |
+| nome cinco  |
++-------------+
+2 rows in set (0.000 sec)
+
+**********************************************************************
+
+8. Listar nome e email das pessoas que não tem telefone
+
+MariaDB [MeuBanco]> SELECT pessoas.nome, pessoas.email FROM `pessoas` where pessoas.id NOT IN (SELECT telefone.idpessoa FROM telefone);
++-------------+---------+
+| nome        | email   |
++-------------+---------+
+| nome quatro | 4@email |
+| nome cinco  | 5@email |
++-------------+---------+
+2 rows in set (0.000 sec)
+
+**********************************************************************
+
+9. Acrescentar o prefixo (48) e o algarismo 9 aos telefones
+
+MariaDB [MeuBanco]> UPDATE telefone set telefone=CONCAT('(48)9',telefone);
+Query OK, 3 rows affected (0.002 sec)
+Rows matched: 3  Changed: 3  Warnings: 0
+
+MariaDB [MeuBanco]> SELECT * FROM telefone;
++----------+----------------+
+| idpessoa | telefone       |
++----------+----------------+
+|        1 | (48)91111-1111 |
+|        2 | (48)92222-2222 |
+|        3 | (48)93333-3333 |
++----------+----------------+
+3 rows in set (0.000 sec)
+
+**********************************************************************
+
+10. Deletar as pessoas que não tem telefone
+
+MariaDB [MeuBanco]> DELETE FROM pessoas WHERE id NOT IN (SELECT idpessoa FROM telefone);
+Query OK, 2 rows affected (0.002 sec)
+
+MariaDB [MeuBanco]> SELECT * FROM pessoas;
++----+---------+---------+
+| id | nome    | email   |
++----+---------+---------+
+|  1 | Juno    | 1@email |
+|  2 | Leandro | 2@email |
+|  3 | Wayne   | 3@email |
++----+---------+---------+
+3 rows in set (0.000 sec)
+
+**********************************************************************
+
+
+
