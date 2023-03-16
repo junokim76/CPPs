@@ -44,8 +44,9 @@ public class Modelo {
      
     }
 
-    public Modelo(int id, String descricao) {
+    public Modelo(int id, String descricao, Marca marca) {
         this.descricao = descricao;
+        this.marca = marca;
     }
 
     @Override
