@@ -1,0 +1,25 @@
+Título:	Softwares para simulação de circuitos
+Conteúdo:	
+Prezados Alunos e Prezadas Alunas
+
+
+
+Segue sugestões de software de simulação de circuitos eletrônicos:
+
+
+
+Circuit Maker
+
+https://circuitmaker.com/
+
+
+
+PSIM
+
+https://powersimtech.com/products/psim/capabilities-applications/
+
+
+
+LTSpice
+
+https://www.analog.com/en/design-center/design-tools-and-calculators/ltspice-simulator.html

@@ -1,0 +1,5 @@
+(sym_lib_table
+  (version 7)
+  (lib (name "BibliotecaIFSC")(type "KiCad")(uri "${KIPRJMOD}/BibliotecaIFSC.kicad_sym")(options "")(descr ""))
+  (lib (name "Biblioteca_Simbolo")(type "KiCad")(uri "${KIPRJMOD}/Biblioteca_Simbolo.kicad_sym")(options "")(descr ""))
+)
