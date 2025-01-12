@@ -4,6 +4,8 @@
     </head>
     <body>
         <h1>Cursos - IFSC<h1>
-        <p> CTDS do IFSC 2022/2023 </p>
+        <p> TECNICO DES. SISTEMAS do IFSC 2022/2023 </p>
+        <p> TECNICO ELETRONICA do IFSC 2024 </p>
+        <p> ENG ELETRONICA do IFSC 2024 </p>
     </body>
 </html>
